@@ -16,6 +16,8 @@ Provides secure RESTful APIs for authentication, user management, referral track
 
 ---
 
+## 🚀 Getting Started
+
 ### 1. Clone the Repository
 
 ```bash
@@ -84,4 +86,201 @@ JWT_ACCESS_EXPIRES_IN=15d
 | `JWT_ACCESS_SECRET`     | Secret key for JWT signing       | `mySecretKey123!`                       |
 | `JWT_ACCESS_EXPIRES_IN` | JWT token expiration time        | `15d`, `24h`, `30m`                     |
 
-> ⚠️ **Important:** Never commit your `.env` file to version
+> ⚠️ **Important:** Never commit your `.env` file to version control. Add it to `.gitignore`.
+
+---
+
+## 🏃 Running the Application
+
+### Development Mode
+
+```bash
+npm run dev
+```
+
+### Production Mode
+
+```bash
+npm start
+```
+
+The server will start on `http://localhost:5000` (or your configured PORT).
+
+---
+
+## 📡 API Documentation
+
+**Base URL:** `http://localhost:5000/api/v1`
+
+---
+
+## 🔐 Authentication
+
+### User Registration
+
+**POST** `/api/v1/users/register`
+
+```json
+{
+  "name": "MOstasdfsfgfdfdgsddgsdsdffghfgfiz",
+  "email": "johnfgsdgfdfdghfddfdhgfhfdsf@edsfsdxample.com",
+  "password": "passwdfgddsdfgsdffsfofrfghd123"
+}
+```
+
+### User Login
+
+**POST** `/api/v1/users/login`
+
+```json
+{
+  "email": "johnfgsdgfdfdgfddfdhgfhfdsf@edsfsdxample.com",
+  "password": "passwdfgddsdfgsdffsfofrfghd123"
+}
+```
+
+---
+
+## 👤 User Management
+
+### Get User Details
+
+**GET** `/api/v1/users/:userId`
+
+Example: `/api/v1/users/68ffa79593907172c462a9cf`
+
+**Headers:**
+
+```
+Authorization: Bearer <your_jwt_token>
+```
+
+---
+
+## 🛒 Purchase Management
+
+### Create Purchase
+
+**POST** `/api/v1/purchase`
+
+**Headers:**
+
+```
+Authorization: Bearer <your_jwt_token>
+```
+
+**Request Body:**
+
+```json
+{
+  "userId": "68fc9e4cdf42d42c578aefea",
+  "productId": "68fc9fc1df42d42c578aeff2"
+}
+```
+
+---
+
+## 📦 Product Management
+
+### Add Product
+
+**POST** `/api/v1/products`
+
+**Headers:**
+
+```
+Authorization: Bearer <your_jwt_token>
+```
+
+**Request Body:**
+
+```json
+{
+  "name": "Story Book",
+  "price": 3,
+  "description": "A comprehensive guide for Story Book."
+}
+```
+
+### Get Single Product
+
+**GET** `/api/v1/products/:productId`
+
+Example: `/api/v1/products/68fc9fc1df42d42c578aeff2`
+
+### Get All Products
+
+**GET** `/api/v1/products`
+
+**Query Parameters:**
+
+- `page` (optional): Page number (default: 1)
+- `limit` (optional): Items per page (default: 10)
+- `sort` (optional): Sort order (e.g., `price`, `-price`)
+
+---
+
+## 🔒 Authentication & Authorization
+
+Most endpoints require JWT authentication. Include the token in headers:
+
+```
+Authorization: Bearer <your_jwt_token>
+```
+
+---
+
+## 📊 Error Handling
+
+### Common HTTP Status Codes
+
+| Status Code | Description           |
+| ----------- | --------------------- |
+| 200         | Success               |
+| 201         | Created               |
+| 400         | Bad Request           |
+| 401         | Unauthorized          |
+| 403         | Forbidden             |
+| 404         | Not Found             |
+| 500         | Internal Server Error |
+
+---
+
+## 🗂️ Project Structure
+
+```
+referral-backend/
+├── src/
+│   ├── config/          # Configuration files
+│   ├── controllers/     # Route controllers
+│   ├── models/          # Database models
+│   ├── routes/          # API routes
+│   ├── middlewares/     # Custom middlewares
+│   ├── utils/           # Utility functions
+│   └── app.js           # Express app setup
+├── .env                 # Environment variables (not in git)
+├── .env.example         # Example environment file
+├── .gitignore           # Git ignore rules
+├── package.json         # Dependencies
+└── README.md            # This file
+```
+
+---
+
+## 🧪 Testing
+
+```bash
+npm test
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
