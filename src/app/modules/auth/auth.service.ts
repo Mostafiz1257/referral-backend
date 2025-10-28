@@ -13,9 +13,7 @@ const userLoginService = async (email: string, password: string) => {
     _id: user._id,
     name: user.name,
     email: user.email,
-    phone: user.phone,
     role: user.role,
-    address: user.address,
   };
 
   const accessToken = jwt.sign(jwtPayload, config.jwt_access_secret as string, {

@@ -4,7 +4,7 @@ import { Referral } from '../referral/referral.model';
 
 export const simulatePurchase = async (req: Request, res: Response) => {
   try {
-    const { userId, productId } = req.body;
+    const { userId } = req.body;
 
     const user = await User.findById(userId);
     if (!user) {

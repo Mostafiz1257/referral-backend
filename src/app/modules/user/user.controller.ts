@@ -11,7 +11,7 @@ const generateReferralCode = (): string => {
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, referralCode, role } = req.body;
+    const { name, email, password, referralCode } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
